@@ -32,7 +32,6 @@ class _GoogleButtonState extends State<GoogleButton> {
                 setState(() {
                   _isSigningIn = true;
                 });
-                // methode d'implementation de login
 
                 User? user =
                     await Authentication.signInWithGoogle(context: context);
@@ -64,9 +63,9 @@ class _GoogleButtonState extends State<GoogleButton> {
                     Padding(
                       padding: const EdgeInsets.only(left: 10),
                       child: Text(
-                        'Se connecter avec Google',
+                        'Connexion avec Google',
                         style: TextStyle(
-                          fontSize: 20,
+                          fontSize: 18,
                           color: Colors.black54,
                           fontWeight: FontWeight.w600,
                         ),

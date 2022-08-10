@@ -41,15 +41,15 @@ class _LoginState extends State<Login> {
                     Text(
                       'SocialSign',
                       style: TextStyle(
-                        color: Color(0xFFFFCA28),
-                        fontSize: 40,
+                        color: Colors.white,
+                        fontSize: 48,
                       ),
                     ),
                     Text(
                       'Connexion',
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 40,
+                        fontSize: 30,
                       ),
                     ),
                   ],
