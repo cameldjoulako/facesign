@@ -96,11 +96,11 @@ class _ProfileState extends State<Profile> {
                         ),
                       ),
                     ),
-              SizedBox(height: 16.0),
+              SizedBox(height: 15.0),
               Text(
                 'Hello',
                 style: TextStyle(
-                  color: greyColor,
+                  color: Colors.white,
                   fontSize: 26,
                 ),
               ),
@@ -108,26 +108,27 @@ class _ProfileState extends State<Profile> {
               Text(
                 _user.displayName!,
                 style: TextStyle(
-                  color: yellowColor,
+                  color: Colors.black,
                   fontSize: 26,
                 ),
               ),
-              SizedBox(height: 8.0),
+              SizedBox(height: 10.0),
               Text(
                 '( ${_user.email!} )',
                 style: TextStyle(
-                  color: orangeColor,
+                  color: Colors.white,
                   fontSize: 20,
-                  letterSpacing: 0.5,
+                  letterSpacing: 0.3,
                 ),
               ),
               SizedBox(height: 24.0),
               Text(
                 'Vous êtes connecté via votre compte Google.',
                 style: TextStyle(
-                    color: greyColor.withOpacity(0.8),
-                    fontSize: 14,
-                    letterSpacing: 0.2),
+                  color: Colors.black,
+                  fontSize: 14,
+                  letterSpacing: 0.2,
+                ),
               ),
               // ignore: prefer_const_constructors
               SizedBox(height: 16.0),
@@ -138,11 +139,11 @@ class _ProfileState extends State<Profile> {
                   : ElevatedButton(
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(
-                          Colors.redAccent,
+                          Colors.white,
                         ),
                         shape: MaterialStateProperty.all(
                           RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(15),
                           ),
                         ),
                       ),
@@ -158,13 +159,13 @@ class _ProfileState extends State<Profile> {
                         Navigator.of(context).pushReplacement(_routeToLogin());
                       },
                       child: Padding(
-                        padding: EdgeInsets.only(top: 8.0, bottom: 8.0),
+                        padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
                         child: Text(
                           'Se déconnecter',
                           style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.blue,
                             letterSpacing: 2,
                           ),
                         ),
@@ -182,26 +183,26 @@ class AppBarTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisSize: MainAxisSize.min,
       children: [
         Image.asset(
           'assets/images/firebase_logo.png',
-          height: 20,
+          height: 25,
         ),
-        SizedBox(width: 8),
+        SizedBox(width: 15),
         Text(
           'SocialSign',
           style: TextStyle(
-            color: yellowColor,
-            fontSize: 18,
+            color: Colors.white,
+            fontSize: 20,
           ),
         ),
         Text(
-          ' Authentication',
+          ' Authentification',
           style: TextStyle(
-            color: orangeColor,
-            fontSize: 18,
+            color: Colors.white,
+            fontSize: 20,
           ),
         ),
       ],
