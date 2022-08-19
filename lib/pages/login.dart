@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:socialsign/widgets/google_button.dart';
 
-const orangeColor = Color(0xFFF57C00);
-const bgColor = Colors.indigo;
+const bgColor = Colors.blue;
 
 class Login extends StatefulWidget {
   @override

@@ -5,11 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:socialsign/pages/login.dart';
 import 'package:socialsign/services/authentification.dart';
 
-const Color orangeColor = Color(0xFFF57C00);
 const Color bgColor = Color(0xFF4285F4);
-const Color yellowColor = Color(0xFFFFCA28);
-const Color bgDark = Color(0xFF2C384A);
-const Color orangeColor2 = Color(0xFFFFA000);
 const Color greyColor = Color(0xFFECEFF1);
 
 class Profile extends StatefulWidget {
@@ -130,7 +126,6 @@ class _ProfileState extends State<Profile> {
                   letterSpacing: 0.2,
                 ),
               ),
-              // ignore: prefer_const_constructors
               SizedBox(height: 16.0),
               _isSigningOut
                   ? CircularProgressIndicator(
@@ -155,7 +150,6 @@ class _ProfileState extends State<Profile> {
                         setState(() {
                           _isSigningOut = false;
                         });
-                        // ignore: use_build_context_synchronously
                         Navigator.of(context).pushReplacement(_routeToLogin());
                       },
                       child: Padding(
