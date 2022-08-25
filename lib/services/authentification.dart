@@ -8,14 +8,14 @@ import 'package:socialsign/pages/profile.dart';
 const Color bgColor = Color(0xFF4285F4);
 
 class Authentication {
-  //initialisation firebase et redirection en cas ou l'utilisateur est deja connecté
+  //initialisation firebase et redirection au cas ou l'utilisateur est deja connecté
   static Future<FirebaseApp> initApp({required BuildContext context}) async {
     FirebaseApp firebaseApp = await Firebase.initializeApp();
 
     User? user = FirebaseAuth.instance.currentUser;
 
     if (user != null) {
-      print("Utilisateur Connecté: " + user.email!);
+      print("Utilisateur Connecté: ${user.email!}");
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (context) => Profile(user: user)),
       );
@@ -23,8 +23,6 @@ class Authentication {
 
     return firebaseApp;
   }
-
-  //fin init firebase
 
   static SnackBar customSnackBar({required String content}) {
     return SnackBar(

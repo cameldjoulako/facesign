@@ -55,8 +55,6 @@ class _LoginState extends State<Login> {
                   ],
                 ),
               ),
-              //GoogleButton()
-              //debut ajout
               FutureBuilder(
                 future: Authentication.initApp(context: context),
                 builder: (context, snapshot) {
@@ -72,7 +70,6 @@ class _LoginState extends State<Login> {
                   );
                 },
               ),
-              //fin  ajout
             ],
           ),
         ),
