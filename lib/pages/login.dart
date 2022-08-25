@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:socialsign/services/authentification.dart';
 import 'package:socialsign/widgets/google_button.dart';
 
 const bgColor = Colors.blue;
@@ -54,7 +55,24 @@ class _LoginState extends State<Login> {
                   ],
                 ),
               ),
-              GoogleButton()
+              //GoogleButton()
+              //debut ajout
+              FutureBuilder(
+                future: Authentication.initApp(context: context),
+                builder: (context, snapshot) {
+                  if (snapshot.hasError) {
+                    return Text("Erreur d'initialisation de Firebase");
+                  } else if (snapshot.connectionState == ConnectionState.done) {
+                    return GoogleButton();
+                  }
+                  return CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(
+                      Colors.white,
+                    ),
+                  );
+                },
+              ),
+              //fin  ajout
             ],
           ),
         ),
