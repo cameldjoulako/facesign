@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:socialsign/services/authentification.dart';
-import 'package:socialsign/widgets/google_button.dart';
+import 'package:socialsign/widgets/facebook_button.dart';
 
-const bgColor = Colors.blue;
+const Color bgColor = Color.fromARGB(255, 7, 91, 226);
 
 class Login extends StatefulWidget {
+  const Login({Key? key}) : super(key: key);
+
   @override
   _LoginState createState() => _LoginState();
 }
@@ -39,14 +41,14 @@ class _LoginState extends State<Login> {
                     ),
                     SizedBox(height: 20),
                     Text(
-                      'SocialSign',
+                      'Social Login',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 48,
                       ),
                     ),
                     Text(
-                      'Connexion',
+                      'Connexion Facebook',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 30,
@@ -55,21 +57,7 @@ class _LoginState extends State<Login> {
                   ],
                 ),
               ),
-              FutureBuilder(
-                future: Authentication.initApp(context: context),
-                builder: (context, snapshot) {
-                  if (snapshot.hasError) {
-                    return Text("Erreur d'initialisation de Firebase");
-                  } else if (snapshot.connectionState == ConnectionState.done) {
-                    return GoogleButton();
-                  }
-                  return CircularProgressIndicator(
-                    valueColor: AlwaysStoppedAnimation<Color>(
-                      Colors.white,
-                    ),
-                  );
-                },
-              ),
+              FacebookButton()
             ],
           ),
         ),

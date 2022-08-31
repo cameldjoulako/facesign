@@ -1,11 +1,11 @@
 import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter/material.dart';
 import 'package:socialsign/pages/profile.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
-const Color bgColor = Color(0xFF4285F4);
+const Color bgColor = Color.fromARGB(255, 7, 91, 226);
 
 class Authentication {
   //initialisation firebase et redirection au cas ou l'utilisateur est deja connecté
@@ -38,25 +38,18 @@ class Authentication {
   }
 
 // Connexion avec Google
-  static Future<User?> signInWithGoogle({required BuildContext context}) async {
+  static Future<User?> signInWithFacebook(
+      {required BuildContext context}) async {
     FirebaseAuth auth = FirebaseAuth.instance;
     User? user;
 
-    final GoogleSignIn googleSignIn = GoogleSignIn();
-
-    // Déclenchement du flux d'authentification
-    final GoogleSignInAccount? googleSignInAccount =
-        await googleSignIn.signIn();
+    final LoginResult facebookSignInAccount =
+        await FacebookAuth.instance.login();
     // recuperation des détails d'autorisation de la demande de connexion
-    if (googleSignInAccount != null) {
-      final GoogleSignInAuthentication googleSignInAuthentication =
-          await googleSignInAccount.authentication;
-
+    if (facebookSignInAccount.status == LoginStatus.success) {
       // création d'un nouvel identifiant
-      final AuthCredential credential = GoogleAuthProvider.credential(
-        accessToken: googleSignInAuthentication.accessToken,
-        idToken: googleSignInAuthentication.idToken,
-      );
+      final OAuthCredential credential = FacebookAuthProvider.credential(
+          facebookSignInAccount.accessToken!.token);
 
       try {
         //connexion et renvoi de l'identifiant de l'utilisateur dans user
@@ -83,7 +76,7 @@ class Authentication {
         ScaffoldMessenger.of(context).showSnackBar(
           Authentication.customSnackBar(
             content:
-                "Une erreur s'est produite lors de l'utilisation de Google Sign-In. Réessayer.",
+                "Une erreur s'est produite lors de l'utilisation de Facebook Sign-In. Réessayer.",
           ),
         );
       }
@@ -93,10 +86,8 @@ class Authentication {
   }
 
   static Future<void> signOut({required BuildContext context}) async {
-    final GoogleSignIn googleSignIn = GoogleSignIn();
-
     try {
-      await googleSignIn.signOut();
+      await FacebookAuth.instance.logOut();
       await FirebaseAuth.instance.signOut();
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(

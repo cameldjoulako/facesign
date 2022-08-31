@@ -3,12 +3,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:socialsign/pages/profile.dart';
 import 'package:socialsign/services/authentification.dart';
 
-class GoogleButton extends StatefulWidget {
+class FacebookButton extends StatefulWidget {
+  const FacebookButton({Key? key}) : super(key: key);
+
   @override
-  _GoogleButtonState createState() => _GoogleButtonState();
+  _FacebookButtonState createState() => _FacebookButtonState();
 }
 
-class _GoogleButtonState extends State<GoogleButton> {
+class _FacebookButtonState extends State<FacebookButton> {
   bool _isSigningIn = false;
 
   @override
@@ -16,7 +18,7 @@ class _GoogleButtonState extends State<GoogleButton> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 16.0),
       child: _isSigningIn
-          ? CircularProgressIndicator(
+          ? const CircularProgressIndicator(
               valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
             )
           : OutlinedButton(
@@ -34,7 +36,7 @@ class _GoogleButtonState extends State<GoogleButton> {
                 });
 
                 User? user =
-                    await Authentication.signInWithGoogle(context: context);
+                    await Authentication.signInWithFacebook(context: context);
 
                 setState(() {
                   _isSigningIn = false;
@@ -55,16 +57,16 @@ class _GoogleButtonState extends State<GoogleButton> {
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Image(
-                      image: AssetImage("assets/images/google_logo.png"),
+                  children: [
+                    const Image(
+                      image: AssetImage("assets/images/fb_logo.png"),
                       height: 35.0,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 10),
+                    const Padding(
+                      padding: EdgeInsets.only(left: 10),
                       child: Text(
-                        'Connexion avec Google',
-                        style: TextStyle(
+                        'Connexion Facebook',
+                        style: const TextStyle(
                           fontSize: 18,
                           color: Colors.black54,
                           fontWeight: FontWeight.w600,
