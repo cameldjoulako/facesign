@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:socialsign/pages/login.dart';
-import 'package:socialsign/services/authentification.dart';
 
 const bgColor = Colors.blue;
 

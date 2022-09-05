@@ -37,22 +37,20 @@ class Authentication {
     );
   }
 
-// Connexion avec Google
-  static Future<User?> signInWithFacebook(
+// Connexion avec Facebook
+  static Future<User?> signInWithFacebook( 
       {required BuildContext context}) async {
     FirebaseAuth auth = FirebaseAuth.instance;
     User? user;
 
     final LoginResult facebookSignInAccount =
         await FacebookAuth.instance.login();
-    // recuperation des détails d'autorisation de la demande de connexion
+
     if (facebookSignInAccount.status == LoginStatus.success) {
-      // création d'un nouvel identifiant
       final OAuthCredential credential = FacebookAuthProvider.credential(
           facebookSignInAccount.accessToken!.token);
 
       try {
-        //connexion et renvoi de l'identifiant de l'utilisateur dans user
         final UserCredential userCredential =
             await auth.signInWithCredential(credential);
 
