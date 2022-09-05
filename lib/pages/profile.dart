@@ -119,7 +119,7 @@ class _ProfileState extends State<Profile> {
               ),
               SizedBox(height: 24.0),
               Text(
-                'Vous êtes connecté via votre compte Google.',
+                'Vous êtes connecté via votre compte Facebook.',
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 14,

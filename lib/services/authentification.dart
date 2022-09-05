@@ -87,8 +87,8 @@ class Authentication {
 
   static Future<void> signOut({required BuildContext context}) async {
     try {
-      await FacebookAuth.instance.logOut();
       await FirebaseAuth.instance.signOut();
+      await FacebookAuth.instance.logOut();
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         Authentication.customSnackBar(

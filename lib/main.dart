@@ -19,21 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: bgColor,
       ),
-      home: FutureBuilder(
-        future: Authentication.initApp(context: context),
-        builder: (context, snapshot) {
-          if (snapshot.hasError) {
-            return Text("Erreur d'initialisation de Firebase");
-          } else if (snapshot.connectionState == ConnectionState.done) {
-            return Login();
-          }
-          return const CircularProgressIndicator(
-            valueColor: AlwaysStoppedAnimation<Color>(
-              Colors.white,
-            ),
-          );
-        },
-      ),
+      home: Login(),
     );
   }
 }
